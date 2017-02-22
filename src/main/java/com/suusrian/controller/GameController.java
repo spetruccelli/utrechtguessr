@@ -13,6 +13,4 @@ public class GameController {
         return new ModelAndView("game", "message", message);
     }
 
-
-
 }

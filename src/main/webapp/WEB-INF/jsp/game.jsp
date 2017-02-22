@@ -23,20 +23,14 @@
         <script>
             function initMap() {
                 var myLatlng = {lat: 52.09073739999999, lng: 5.121420100000023};
+                var opt = { zoom: 14,
+                    maxZoom: 16,
+                    minZoom: 13,
+                    center: myLatlng };
 
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 14,
-                    center: myLatlng
-                });
 
+                var map = new google.maps.Map(document.getElementById('map'), opt);
 
-                map.addListener('center_changed', function() {
-                    // 3 seconds after the center of the map has changed, pan back to the
-                    // marker.
-                    window.setTimeout(function() {
-                        map.panTo(marker.getPosition());
-                    }, 3000);
-                });
 
                 map.addListener('click', function(e) {
 //                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
@@ -46,7 +40,7 @@
                         map: map,
 //                        icon: 'http://www.googlemapsmarkers.com/v1/A/0099FF/',
                         icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                        title: 'your guess'
+                        title: 'your guess',
                     });
                 });
 

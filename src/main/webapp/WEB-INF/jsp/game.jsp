@@ -12,8 +12,6 @@
     ${message}
 
 
-
-
     <div id="photo_plus_map">
         <div id = "photo">
             <img src="https://maps.googleapis.com/maps/api/streetview?size=400x400&location=Wilhelminapark,Utrecht&fov=90&heading=235&pitch=10 &key=AIzaSyCfqW-2mC1LcI-7cDDzSuXxMwY5uvHHg44">
@@ -22,20 +20,18 @@
 
         <script>
             function initMap() {
-                var myLatlng = {lat: 52.09073739999999, lng: 5.121420100000023};
+                var myLatlng = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
+
                 var opt = { zoom: 14,
                     maxZoom: 16,
                     minZoom: 13,
                     center: myLatlng };
 
-
                 var map = new google.maps.Map(document.getElementById('map'), opt);
 
-
                 var listener1 = map.addListener('click', function(e) {
-//                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
-                    var clickedPosition = {lat: e.latLng.lat(), lng: e.latLng.lng()};
-                    var actualPosition = {lat: 52.09073739999999, lng: 5.121420100000023};
+                    var clickedPosition = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
+                    var actualPosition = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
                     var marker = new google.maps.Marker({
                         position: clickedPosition,
                         map: map,
@@ -49,9 +45,7 @@
                         title: 'actual location'
                     });
                     google.maps.event.removeListener(listener1);
-                    var pos1 = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
-                    var pos2 = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
-                    alert("Afstand tot de Dom is: " + google.maps.geometry.spherical.computeDistanceBetween(pos1, pos2).toFixed(2) + " meter");
+                    alert("Afstand tot de Dom is: " + google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2) + " meter");
                 });
 
             }

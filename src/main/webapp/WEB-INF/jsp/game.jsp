@@ -15,6 +15,7 @@
     <div id="photo_plus_map">
         <div id = "photo">
             <img src="https://maps.googleapis.com/maps/api/streetview?size=400x400&location=Wilhelminapark,Utrecht&fov=90&heading=235&pitch=10 &key=AIzaSyCfqW-2mC1LcI-7cDDzSuXxMwY5uvHHg44">
+                <%--<img src="/images/image1.jpg">--%>
         </div>
         <div id="map" style="width: 800px; height: 600px"></div>
 

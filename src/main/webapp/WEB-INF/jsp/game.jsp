@@ -4,7 +4,7 @@
 <head>
     <title>Utrecht Guessr</title>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARs25YxEdNMmX65Osv7B6VInIGM8R4DO0&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARs25YxEdNMmX65Osv7B6VInIGM8R4DO0&callback=initMap&libraries=geometry">
     </script>
 </head>
 <body>
@@ -32,16 +32,26 @@
                 var map = new google.maps.Map(document.getElementById('map'), opt);
 
 
-                map.addListener('click', function(e) {
+                var listener1 = map.addListener('click', function(e) {
 //                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
                     var clickedPosition = {lat: e.latLng.lat(), lng: e.latLng.lng()};
+                    var actualPosition = {lat: 52.09073739999999, lng: 5.121420100000023};
                     var marker = new google.maps.Marker({
                         position: clickedPosition,
                         map: map,
-//                        icon: 'http://www.googlemapsmarkers.com/v1/A/0099FF/',
                         icon:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                        title: 'your guess',
+                        title: 'your guess'
                     });
+                    var marker2 = new google.maps.Marker({
+                        position: actualPosition,
+                        map: map,
+                        icon:'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                        title: 'actual location'
+                    });
+                    google.maps.event.removeListener(listener1);
+                    var pos1 = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
+                    var pos2 = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
+                    alert("Afstand tot de Dom is: " + google.maps.geometry.spherical.computeDistanceBetween(pos1, pos2).toFixed(2) + " meter");
                 });
 
             }

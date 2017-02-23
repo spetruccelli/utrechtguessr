@@ -23,6 +23,7 @@
         <jdbc:script location="classpath:db/initialize-db.sql"/>
     </jdbc:initialize-database>
 
+    <!--Initialization is below: open localhost 8082 in the browser for the h2 db manager. JDBC URL - jdbc:h2:mem:dataSource -->
     <bean id="h2Server" class="org.h2.tools.Server" factory-method="createTcpServer" init-method="start" destroy-method="stop" depends-on="h2WebServer">
         <constructor-arg value="-tcp,-tcpAllowOthers,-tcpPort,9092"/>
     </bean>

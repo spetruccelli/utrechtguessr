@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,34 +31,40 @@ public class GameController {
 
     @RequestMapping("game")
     public ModelAndView game() {
-
         ModelAndView modelAndView = new ModelAndView("game");
+
         String message = "<h1>The game starts now!<h1>";
         modelAndView.addObject("message", message);
-        try {
-            Optional<Location> location = locationDao.getLocation(1);
-            if (location.isPresent()) {
-                modelAndView.addObject("location", location.get());
+        List<Location> locations = new ArrayList<>();
+        for(int i=1; i<4; i++) {
+        Optional<Location> location = locationDao.getLocation(i);
+        location.ifPresent(locations::add);
             }
-        }
-        catch (Exception e){
-            //silent fail for now
-
-        }
+        modelAndView.addObject("locationList", locations);
         return modelAndView;
     }
 
     //    op te zoeken door: http://localhost:8080/locations/1
-    @RequestMapping(value = "ga", method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "locations/{id}", method = RequestMethod.GET)
     public ModelAndView getLocationById(@PathVariable int id) {
-        return null;
+        ModelAndView modelAndView = new ModelAndView("locations");
+        try {
+            Optional<Location> location = locationDao.getLocation(id);
+            if (location.isPresent()) {
+                modelAndView.addObject("location", location.get());
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+
+        }
+        return modelAndView;
     }
 
     @ResponseBody
     private ResponseEntity<Location> handleError(Exception e) {
         return new ResponseEntity<Location>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
     @ResponseBody
     private ResponseEntity<Location> handleNotFound() {
         return new ResponseEntity<Location>(HttpStatus.NOT_FOUND);

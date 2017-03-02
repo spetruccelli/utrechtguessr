@@ -10,7 +10,7 @@ public interface LocationDao {
 
 //    Location addLocation(Location location) throws DataAccessException;
 
-    Location getLocation(final int id) throws DataAccessException;
+    Optional<Location> getLocation(final int id) throws DataAccessException;
 
 //    Optional<Location> updateLocation(Location location) throws DataAccessException;
 //

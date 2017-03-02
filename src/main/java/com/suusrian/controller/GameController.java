@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -28,29 +29,28 @@ public class GameController {
 
     @RequestMapping("game")
     public ModelAndView game() {
-        String message = "<h1>The game starts now!<h1>";
-        return new ModelAndView("game", "message", message);
-    }
 
-    //    op te zoeken door: http://localhost:8080/locations/1
-    @RequestMapping(value = "locations/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<Location> getLocationById(@PathVariable int id) {
-        System.out.println("stap 0 = " + id);
+        ModelAndView modelAndView = new ModelAndView("game");
+        String message = "<h1>The game starts now!<h1>";
+        modelAndView.addObject("message", message);
         try {
-            System.out.println("stap 1 = " + id);
-            Optional<Location> location = locationDao.getLocation(id);
+            Optional<Location> location = locationDao.getLocation(1);
             if (location.isPresent()) {
-                return new ResponseEntity<>(location.get(), HttpStatus.OK);
-            }
-            else {
-                return handleNotFound();
+                modelAndView.addObject("location", location.get());
             }
         }
         catch (Exception e){
-            return handleError(e);
+            //silent fail for now
 
         }
+        return modelAndView;
+    }
+
+    //    op te zoeken door: http://localhost:8080/locations/1
+    @RequestMapping(value = "ga", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView getLocationById(@PathVariable int id) {
+        return null;
     }
 
     @ResponseBody

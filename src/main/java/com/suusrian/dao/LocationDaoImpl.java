@@ -27,7 +27,6 @@ public class LocationDaoImpl implements LocationDao {
 
     @Override
     public Optional<Location> getLocation(int id) throws DataAccessException {
-        System.out.println("stap 2 = " + id);
         String query = "select * from locations where id = " + id;
         List<Location> locations = this.jdbcTemplate.query(query, locationMapper);
         if ( locations.isEmpty() ){

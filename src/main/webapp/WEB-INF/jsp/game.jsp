@@ -6,6 +6,7 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARs25YxEdNMmX65Osv7B6VInIGM8R4DO0&callback=initMap&libraries=geometry">
     </script>
+    <script src="../js/game.js"></script>
 </head>
 <body>
 Ok... here we go.. :)
@@ -30,13 +31,30 @@ ${message}
 
     <script>
         function initMap() {
-            var myLatlng = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
+            var mapCenter = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
+
+//            //------------------------------------------//
+//            var xmlhttp = new XMLHttpRequest();
+//            var url = "../images/data.json";
+//
+//            xmlhttp.onreadystatechange = function() {
+//                if (this.readyState == 4 && this.status == 200) {
+//                    var myArr = JSON.parse(this.responseText);
+//                    console.log(myArr);
+//                }
+//            };
+//
+//            xmlhttp.open("GET", url, true);
+//            xmlhttp.send();
+//
+//            //------------------------------------------//
+//
 
             var opt = {
                 zoom: 14,
                 maxZoom: 16,
                 minZoom: 13,
-                center: myLatlng
+                center: mapCenter
             };
 
 

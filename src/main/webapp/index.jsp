@@ -13,7 +13,7 @@
     Some information about how to play this awesome game...
 
     <h3>
-        <a href="game">Click here to start the game </a><br/>
+        <a href="/game">Click here to start the game </a><br/>
     </h3>
 
 </div>

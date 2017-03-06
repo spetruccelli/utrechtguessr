@@ -5,6 +5,7 @@ import com.suusrian.dao.LocationDaoImpl;
 import com.suusrian.domain.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import java.util.Optional;
 
 
 @Controller
+//@RequestMapping("/game")
 public class GameController {
 
     private LocationDao locationDao;
@@ -29,7 +31,7 @@ public class GameController {
         this.locationDao = locationDaoImpl;
     }
 
-    @RequestMapping("game")
+    @RequestMapping(value = "/game", method = RequestMethod.GET)
     public ModelAndView game() {
         ModelAndView modelAndView = new ModelAndView("game");
 
@@ -44,8 +46,8 @@ public class GameController {
         return modelAndView;
     }
 
-    //    op te zoeken door: http://localhost:8080/locations/1
-    @RequestMapping(value = "locations/{id}", method = RequestMethod.GET)
+    //    op te zoeken door: http://localhost:8085/game/locations/1
+    @RequestMapping(value = "/game/locations/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ModelAndView getLocationById(@PathVariable int id) {
         ModelAndView modelAndView = new ModelAndView("locations");
         try {

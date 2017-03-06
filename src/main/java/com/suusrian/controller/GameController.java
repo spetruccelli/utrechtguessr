@@ -38,7 +38,7 @@ public class GameController {
         String message = "<h1>The game starts now!<h1>";
         modelAndView.addObject("message", message);
         List<Location> locations = new ArrayList<>();
-        for(int i=1; i<4; i++) {
+        for(int i=0; i<10; i++) {
         Optional<Location> location = locationDao.getLocation(i);
         location.ifPresent(locations::add);
             }

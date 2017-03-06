@@ -28,7 +28,6 @@ ${message}
 </div>
 
 
-
     <script>
         function initMap() {
             var mapCenter = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
@@ -58,70 +57,33 @@ ${message}
             };
 
 
-            var map1 = new google.maps.Map(document.getElementById('map1'), opt);
-            var listener1 = map1.addListener('click', function (e) {
+            <c:forEach items="${locationList}" var="location">
+
+            var map${location.id} = new google.maps.Map(document.getElementById('map${location.id}'), opt);
+            var listener${location.id} = map${location.id}.addListener('click', function (e) {
                 var clickedPosition = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
-                var actualPosition = new google.maps.LatLng(${locationList.get(0).latitude}, ${locationList.get(0).longitude});
-                var marker1a = new google.maps.Marker({
+                var actualPosition = new google.maps.LatLng(${location.latitude}, ${location.longitude});
+                var marker${location.id}a = new google.maps.Marker({
                     position: clickedPosition,
-                    map: map1,
+                    map: map${location.id},
                     icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
                     title: 'your guess'
                 });
-                var marker1b = new google.maps.Marker({
+                var marker${location.id}b = new google.maps.Marker({
                     position: actualPosition,
-                    map: map1,
+                    map: map${location.id},
                     icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                    title: 'actual location'
+                    title: 'actual location ${location.id}'
                 });
-                google.maps.event.removeListener(listener1);
+                google.maps.event.removeListener(listener${location.id});
                 alert("Afstand tot de werkelijke locatie is: " + google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2) + " meter");
             });
 
-            var map2 = new google.maps.Map(document.getElementById('map2'), opt);
-            var listener2 = map2.addListener('click', function (e) {
-                var clickedPosition = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
-                var actualPosition = new google.maps.LatLng(${locationList.get(1).latitude}, ${locationList.get(1).longitude});
-                var marker2a = new google.maps.Marker({
-                    position: clickedPosition,
-                    map: map2,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                    title: 'your guess'
-                });
-                var marker2b = new google.maps.Marker({
-                    position: actualPosition,
-                    map: map2,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                    title: 'actual location'
-                });
-                google.maps.event.removeListener(listener2);
-                alert("Afstand tot de werkelijke locatie is: " + google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2) + " meter");
-            });
-
-            var map3 = new google.maps.Map(document.getElementById('map3'), opt);
-            var listener3 = map3.addListener('click', function (e) {
-                var clickedPosition = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
-                var actualPosition = new google.maps.LatLng(${locationList.get(2).latitude}, ${locationList.get(2).longitude});
-                var marker3a = new google.maps.Marker({
-                    position: clickedPosition,
-                    map: map3,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                    title: 'your guess'
-                });
-                var marker3b = new google.maps.Marker({
-                    position: actualPosition,
-                    map: map3,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                    title: 'actual location'
-                });
-                google.maps.event.removeListener(listener3);
-                alert("Afstand tot de werkelijke locatie is: " + google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2) + " meter");
-            });
+            </c:forEach>
 
 
         }
     </script>
-
 
 
 </body>

@@ -12,18 +12,6 @@
 Ok... here we go.. :)
 ${message}
 
-
-<%--<c:forEach items="${scoreList}" var="score">--%>
-    <%--<table style="border: blue 4px solid;" >--%>
-        <%--<tr>--%>
-            <%--<td >${score.id} </td>--%>
-            <%--<td >${score.distance} </td>--%>
-            <%--<td >${score.points} </td>--%>
-        <%--</tr>--%>
-    <%--</table>--%>
-<%--</c:forEach>--%>
-
-
 <div id="photos_plus_map">
 <c:forEach items="${locationList}" var="location">
     <table style="border: blue 4px solid;" >
@@ -44,23 +32,6 @@ ${message}
     <script>
         function initMap() {
             var mapCenter = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
-
-//            //------------------------------------------//
-//            var xmlhttp = new XMLHttpRequest();
-//            var url = "../images/data.json";
-//
-//            xmlhttp.onreadystatechange = function() {
-//                if (this.readyState == 4 && this.status == 200) {
-//                    var myArr = JSON.parse(this.responseText);
-//                    console.log(myArr);
-//                }
-//            };
-//
-//            xmlhttp.open("GET", url, true);
-//            xmlhttp.send();
-//
-//            //------------------------------------------//
-//
 
             var opt = {
                 zoom: 14,

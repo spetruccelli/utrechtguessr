@@ -13,16 +13,16 @@ import java.util.Optional;
 
 @Component
 public class LocationDaoImpl implements LocationDao {
-    private int id = 1;
+    private int id;
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final LocationMapper locationMapper;
 
 
     @Autowired
-    public LocationDaoImpl(final DataSource dataSource, final LocationMapper bookMapper) {
+    public LocationDaoImpl(final DataSource dataSource, final LocationMapper locationMapper) {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-        this.locationMapper = bookMapper;
+        this.locationMapper = locationMapper;
     }
 
     @Override

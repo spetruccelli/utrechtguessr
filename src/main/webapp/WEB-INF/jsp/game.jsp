@@ -13,6 +13,17 @@ Ok... here we go.. :)
 ${message}
 
 
+<%--<c:forEach items="${scoreList}" var="score">--%>
+    <%--<table style="border: blue 4px solid;" >--%>
+        <%--<tr>--%>
+            <%--<td >${score.id} </td>--%>
+            <%--<td >${score.distance} </td>--%>
+            <%--<td >${score.points} </td>--%>
+        <%--</tr>--%>
+    <%--</table>--%>
+<%--</c:forEach>--%>
+
+
 <div id="photos_plus_map">
 <c:forEach items="${locationList}" var="location">
     <table style="border: blue 4px solid;" >
@@ -21,8 +32,10 @@ ${message}
             <td style="width: 7px;">&nbsp;</td>
             <td><div id="map${location.id}" style="width: 500px; height: 500px"></div></td>
             <td style="width: 7px;">&nbsp;</td>
-            <td style="width: 200px;text-align: left;" >Your score is: </td>
+            <td id="distance${location.id}" style="width: 200px;text-align: left;" > Choose the location of the picture shown</td>
+            <td id="score${location.id}" style="width: 200px;text-align: left;" > </td>
         </tr>
+
     </table>
 </c:forEach>
 </div>
@@ -76,7 +89,12 @@ ${message}
                     title: 'actual location ${location.id}'
                 });
                 google.maps.event.removeListener(listener${location.id});
-                alert("Afstand tot de werkelijke locatie is: " + google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2) + " meter");
+                var distance = google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2);
+                var distanceMessage = "Afstand tot de werkelijke locatie is: " + google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2) + " meter";
+                var scoreMessage = "Je score is: 5";
+                document.getElementById('distance${location.id}').textContent = distanceMessage;
+                document.getElementById('score${location.id}').textContent = scoreMessage;
+
             });
 
             </c:forEach>

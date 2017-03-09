@@ -2,7 +2,9 @@ package com.suusrian.controller;
 
 import com.suusrian.dao.LocationDao;
 import com.suusrian.dao.LocationDaoImpl;
+import com.suusrian.dao.ScoreDao;
 import com.suusrian.domain.Location;
+import com.suusrian.domain.Score;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,10 +27,13 @@ import java.util.Optional;
 public class GameController {
 
     private LocationDao locationDao;
+    private ScoreDao scoreDao;
 
     @Autowired
-    public GameController(LocationDao locationDaoImpl) {
+    public GameController(LocationDao locationDaoImpl, ScoreDao scoreDao) {
+
         this.locationDao = locationDaoImpl;
+        this.scoreDao = scoreDao;
     }
 
     @RequestMapping(value = "/game", method = RequestMethod.GET)
@@ -37,12 +42,20 @@ public class GameController {
 
         String message = "<h1>The game starts now!<h1>";
         modelAndView.addObject("message", message);
+
         List<Location> locations = new ArrayList<>();
         for(int i=0; i<10; i++) {
-        Optional<Location> location = locationDao.getLocation(i);
-        location.ifPresent(locations::add);
+            Optional<Location> location = locationDao.getLocation(i);
+            location.ifPresent(locations::add);
             }
         modelAndView.addObject("locationList", locations);
+
+        List<Score> scores = new ArrayList<>();
+        for(int i=0; i<10; i++) {
+            Optional<Score> score = scoreDao.getScoreById(i);
+            score.ifPresent(scores::add);
+        }
+        modelAndView.addObject("scoreList", scores);
         return modelAndView;
     }
 

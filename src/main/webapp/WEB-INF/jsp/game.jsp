@@ -6,11 +6,13 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARs25YxEdNMmX65Osv7B6VInIGM8R4DO0&callback=initMap&libraries=geometry">
     </script>
-    <script src="../js/game.js"></script>
 </head>
 <body>
 Ok... here we go.. :)
 ${message}
+
+<div id="totalScore" style="width: 1000px;text-align: left;color:RED" >Your total score up to now is: 0 out of 100 </div>
+
 
 <div id="photos_plus_map">
 <c:forEach items="${locationList}" var="location">
@@ -30,6 +32,8 @@ ${message}
 
 
     <script>
+        var totalScore = 0;
+
         function initMap() {
             var mapCenter = new google.maps.LatLng(52.09073739999999, 5.121420100000023);
 
@@ -61,8 +65,12 @@ ${message}
                 });
                 google.maps.event.removeListener(listener${location.id});
                 var distance = google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2);
-                var distanceMessage = "Afstand tot de werkelijke locatie is: " + google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2) + " meter";
-                var scoreMessage = "Je score is: 5";
+                var score = calculateScore(distance, score);
+                totalScore = totalScore + score;
+                document.getElementById('totalScore').textContent = "Your total score up to now is: " + totalScore + " out of 100";
+
+                var distanceMessage = "Afstand tot de werkelijke locatie is: " + distance + " meter";
+                var scoreMessage = "Je score is: " + score + " van de 10";
                 document.getElementById('distance${location.id}').textContent = distanceMessage;
                 document.getElementById('score${location.id}').textContent = scoreMessage;
 
@@ -72,8 +80,33 @@ ${message}
 
 
         }
-    </script>
 
+       function calculateScore(distance, score)
+       {
+           if(distance<30){
+               score = 10;}
+           else if (distance < 50){
+               score = 9;}
+           else if (distance < 100){
+               score = 8;}
+           else if (distance < 500){
+               score = 7;}
+           else if (distance < 1000){
+               score = 6;}
+           else if (distance < 1500){
+               score = 5;}
+           else if (distance < 2000){
+               score = 4;}
+           else if (distance < 2500){
+               score = 3;}
+           else if (distance < 3000){
+               score = 2;}
+           else {
+               score = 1;}
+           return score;
+       }
+
+    </script>
 
 </body>
 </html>

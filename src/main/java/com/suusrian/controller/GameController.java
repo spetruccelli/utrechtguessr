@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 
 @Controller
@@ -28,6 +25,8 @@ public class GameController {
 
     private LocationDao locationDao;
     private ScoreDao scoreDao;
+
+    private int listLength = 10;
 
     @Autowired
     public GameController(LocationDao locationDaoImpl, ScoreDao scoreDao) {
@@ -43,15 +42,17 @@ public class GameController {
         String message = "<h1>The game starts now!<h1>";
         modelAndView.addObject("message", message);
 
-        List<Location> locations = new ArrayList<>();
-        for(int i=0; i<10; i++) {
-            Optional<Location> location = locationDao.getLocation(i);
-            location.ifPresent(locations::add);
-            }
-        modelAndView.addObject("locationList", locations);
+        List<Location> locations = locationDao.getLocations();
+        List<Location> shuffled = new ArrayList<>(listLength);
+        Collections.shuffle(locations);
+
+        for(int i=0; i<listLength; i++) {
+            shuffled.add(locations.get(i));
+        }
+        modelAndView.addObject("locationList", shuffled);
 
         List<Score> scores = new ArrayList<>();
-        for(int i=0; i<10; i++) {
+        for(int i=0; i<listLength; i++) {
             Optional<Score> score = scoreDao.getScoreById(i);
             score.ifPresent(scores::add);
         }

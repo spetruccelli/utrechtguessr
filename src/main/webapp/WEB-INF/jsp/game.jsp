@@ -27,8 +27,8 @@ ${message}
                 <td style="width: 7px;">&nbsp;</td>
             </tr>
             <tr>
-                <td id="distance${location.id}" style="width: 200px;text-align: left;"> Choose the location of the
-                    picture shown
+                <td id="distance${location.id}" style="width: 200px;text-align: left;"> <p>Choose the location of the
+                    picture shown</p>
                 </td>
                 <td id="score${location.id}" style="width: 200px;text-align: left;"></td>
             </tr>
@@ -37,6 +37,7 @@ ${message}
     </c:forEach>
 </div>
 
+<div id="totalScore" style="width: 1000px;text-align: left;color:RED">Your total score up to now is: 0 out of 100</div>
 
 <script>
     var totalScore = 0;
@@ -76,8 +77,8 @@ ${message}
             totalScore = totalScore + score;
             document.getElementById('totalScore').textContent = "Your total score up to now is: " + totalScore + " out of 100";
 
-            var distanceMessage = "Afstand tot de werkelijke locatie is: " + distance + " meter";
-            var scoreMessage = "Je score is: " + score + " van de 10";
+            var distanceMessage = "Distance from the actual location: " + distance + " meter";
+            var scoreMessage = "Your score: " + score + " out of 10";
             document.getElementById('distance${location.id}').textContent = distanceMessage;
             document.getElementById('score${location.id}').textContent = scoreMessage;
 

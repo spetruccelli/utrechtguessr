@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,5 +36,17 @@ public class LocationDaoImpl implements LocationDao {
             return locations.stream().findFirst();
         }
     }
+
+    @Override
+    public List<Location> getLocations() throws DataAccessException {
+        String query = "select * from locations";
+        List<Location> locations = this.jdbcTemplate.query(query, locationMapper);
+        if ( locations.isEmpty() ){
+            return Collections.emptyList();
+        } else  {
+            return locations;
+        }
+    }
+
 }
 

@@ -59,6 +59,7 @@ public class GameController {
         return modelAndView;
     }
 
+
     //    op te zoeken door: http://localhost:8085/game/locations/1
     @RequestMapping(value = "/game/locations/{id}", method = RequestMethod.GET)
     public ModelAndView getLocationById(@PathVariable int id) {

@@ -6,6 +6,7 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARs25YxEdNMmX65Osv7B6VInIGM8R4DO0&callback=initMap&libraries=geometry">
     </script>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
 Ok... here we go.. :)
@@ -73,6 +74,17 @@ ${message}
                 var scoreMessage = "Je score is: " + score + " van de 10";
                 document.getElementById('distance${location.id}').textContent = distanceMessage;
                 document.getElementById('score${location.id}').textContent = scoreMessage;
+
+
+                $.ajax({
+                    url:'/score/addscore',
+                    type:'POST',
+                    data: { id: ${location.id}, distance: distance, points: score},
+                    dataType: 'JSON',
+                    success: function(data) {
+
+                    }
+                });
 
             });
 

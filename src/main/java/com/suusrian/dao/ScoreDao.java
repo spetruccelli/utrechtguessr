@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ScoreDao {
 
-//    Location addScore(Location location) throws DataAccessException;
+    Score addScore(Score score) throws DataAccessException;
 
     Optional<Score> getScoreById(final int id) throws DataAccessException;
 

@@ -12,7 +12,7 @@
 Ok... here we go.. :)
 ${message}
 
-<div id="totalScore" style="width: 1000px;text-align: left;color:RED">Your total score up to now is: 0 out of 100</div>
+<div id="totalScore1" style="width: 1000px;text-align: left;color:RED">Your total score up to now is: 0 out of 100</div>
 
 
 <div id="photos_plus_map">
@@ -37,7 +37,7 @@ ${message}
     </c:forEach>
 </div>
 
-<div id="totalScore" style="width: 1000px;text-align: left;color:RED">Your total score up to now is: 0 out of 100</div>
+<div id="totalScore2" style="width: 1000px;text-align: left;color:RED">Your total score up to now is: 0 out of 100</div>
 
 <script>
     var totalScore = 0;
@@ -75,7 +75,8 @@ ${message}
             var distance = google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2);
             var score = calculateScore(distance, score);
             totalScore = totalScore + score;
-            document.getElementById('totalScore').textContent = "Your total score up to now is: " + totalScore + " out of 100";
+            document.getElementById('totalScore1').textContent = "Your total score up to now is: " + totalScore + " out of 100";
+            document.getElementById('totalScore2').textContent = "Your total score up to now is: " + totalScore + " out of 100";
 
             var distanceMessage = "Distance from the actual location: " + distance + " meter";
             var scoreMessage = "Your score: " + score + " out of 10";

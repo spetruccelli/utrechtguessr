@@ -17,25 +17,32 @@ ${message}
 
 <div id="photos_plus_map">
     <c:forEach items="${locationList}" var="location">
-        <table style="border: blue 4px solid;">
+        <table style="border: blue 4px solid; width: 1002px; height: 500px">
             <tr>
-                <td><img src="${location.image}" style="width: 500px; height: 500px"/></td>
-                <td style="width: 7px;">&nbsp;</td>
+                <td style="width: 500px; height: 500px"><img src="${location.image}" style="max-width: 500px; max-height: 500px"/></td>
+                <td style="width: 2px;">&nbsp;</td>
                 <td>
                     <div id="map${location.id}" style="width: 500px; height: 500px"></div>
                 </td>
-                <td style="width: 7px;">&nbsp;</td>
             </tr>
             <tr>
-                <td id="distance${location.id}" style="width: 200px;text-align: left;"> <p>Choose the location of the
-                    picture shown</p>
+                <td id="info${location.id}" style="width: 500px;text-align: left;">info over de locatie</td>
+            </tr>
+            <tr>
+                <td id="distance${location.id}" style="width: 500px;text-align: left;"> <p>Choose the location of the
+                picture shown</p>
                 </td>
-                <td id="score${location.id}" style="width: 200px;text-align: left;"></td>
+                <td style="width: 2px;">&nbsp;</td>
+                <td id="mapinfo${location.id}" style="width: 500px;text-align: left;">It is possible to zoom in/out and to move the map</td>
+            </tr>
+            <tr>
+                <td id="score${location.id}" style="width: 500px;text-align: left;">en dit is de score</td>
             </tr>
 
         </table>
     </c:forEach>
 </div>
+
 
 <div id="totalScore2" style="width: 1000px;text-align: left;color:RED">Your total score up to now is: 0 out of 100</div>
 
@@ -74,6 +81,7 @@ ${message}
             google.maps.event.removeListener(listener${location.id});
             var distance = google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2);
             var score = calculateScore(distance, score);
+            var infoLocation = " The picture shows: " + ${location.id};
             totalScore = totalScore + score;
             document.getElementById('totalScore1').textContent = "Your total score up to now is: " + totalScore + " out of 100";
             document.getElementById('totalScore2').textContent = "Your total score up to now is: " + totalScore + " out of 100";
@@ -82,6 +90,7 @@ ${message}
             var scoreMessage = "Your score: " + score + " out of 10";
             document.getElementById('distance${location.id}').textContent = distanceMessage;
             document.getElementById('score${location.id}').textContent = scoreMessage;
+            document.getElementById('info${location.id}').textContent = infoLocation;
 
 
             $.ajax({
@@ -102,13 +111,13 @@ ${message}
     }
 
     function calculateScore(distance, score) {
-        if (distance < 30) {
+        if (distance < 50) {
             score = 10;
         }
-        else if (distance < 50) {
+        else if (distance < 100) {
             score = 9;
         }
-        else if (distance < 100) {
+        else if (distance < 200) {
             score = 8;
         }
         else if (distance < 500) {

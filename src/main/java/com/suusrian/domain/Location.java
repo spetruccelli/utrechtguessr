@@ -19,15 +19,19 @@ public class Location {
     @XmlAttribute
     private String image;
 
+    @XmlAttribute
+    private String remark;
+
     public Location() {
     }
 
-    public Location(int id, String latitude, String longitude, String image) {
+    public Location(int id, String latitude, String longitude, String image, String remark) {
 
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
         this.image = image;
+        this.remark = remark;
     }
 
 
@@ -58,4 +62,8 @@ public class Location {
     public String getImage() { return image;}
 
     public void setImage(String image) { this.image = image;   }
+
+    public String getRemark() {   return remark;  }
+
+    public void setRemark(String remark) {   this.remark = remark; }
 }

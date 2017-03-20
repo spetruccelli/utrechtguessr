@@ -81,7 +81,7 @@ ${message}
             google.maps.event.removeListener(listener${location.id});
             var distance = google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2);
             var score = calculateScore(distance, score);
-            var infoLocation = " The picture shows: " + ${location.id};
+            var infoLocation = " The picture shows: " + "${location.remark}";
             totalScore = totalScore + score;
             document.getElementById('totalScore1').textContent = "Your total score up to now is: " + totalScore + " out of 100";
             document.getElementById('totalScore2').textContent = "Your total score up to now is: " + totalScore + " out of 100";

@@ -3,9 +3,7 @@
 <html>
 <head>
     <title>Utrecht Guessr</title>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARs25YxEdNMmX65Osv7B6VInIGM8R4DO0&callback=initMap&libraries=geometry">
-    </script>
+
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
@@ -26,7 +24,7 @@ ${message}
                 </td>
             </tr>
             <tr>
-                <td id="info${location.id}" style="width: 500px;text-align: left;">info over de locatie</td>
+                <td id="info${location.id}" style="width: 500px;text-align: left;"></td>
             </tr>
             <tr>
                 <td id="distance${location.id}" style="width: 500px;text-align: left;"> <p>Choose the location of the
@@ -36,7 +34,7 @@ ${message}
                 <td id="mapinfo${location.id}" style="width: 500px;text-align: left;">It is possible to zoom in/out and to move the map</td>
             </tr>
             <tr>
-                <td id="score${location.id}" style="width: 500px;text-align: left;">en dit is de score</td>
+                <td id="score${location.id}" style="width: 500px;text-align: left;"></td>
             </tr>
 
         </table>
@@ -144,6 +142,9 @@ ${message}
         return score;
     }
 
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARs25YxEdNMmX65Osv7B6VInIGM8R4DO0&callback=initMap&libraries=geometry">
 </script>
 
 </body>

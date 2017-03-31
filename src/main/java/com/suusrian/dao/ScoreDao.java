@@ -14,11 +14,6 @@ public interface ScoreDao {
     Optional<Score> getScoreById(final int id) throws DataAccessException;
 
     Optional<Score> updateScore(Score score) throws DataAccessException;
-
-    Integer CalculateAndUpdateScore(int id, Double distance) throws DataAccessException;
-
-//
-//    Optional<Score> deleteScore(final int id) throws DataAccessException;
 }
 
 

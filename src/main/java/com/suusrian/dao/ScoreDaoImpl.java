@@ -69,22 +69,5 @@ public class ScoreDaoImpl implements ScoreDao {
             return null;
         }
     }
-
-
-    @Override
-    public Integer CalculateAndUpdateScore(int id, Double distance) throws DataAccessException {
-        int points = 0;
-        if (distance < 1000) {points = 10;}
-        else if (distance < 5000) {points = 5;}
-        else if (distance < 10000) {points = 1;}
-        final MapSqlParameterSource parameterMap = new MapSqlParameterSource();
-        parameterMap.addValue(ID, id);
-        parameterMap.addValue(DISTANCE, distance);
-        parameterMap.addValue(POINTS, points);
-        String query = "update scores set distance = (:" + DISTANCE + "), points = (:" + POINTS + ") where id =:" + ID;
-        int numberRows = this.jdbcTemplate.update(query, parameterMap);
-        return numberRows;
-
-    }
 }
 

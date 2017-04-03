@@ -1,7 +1,6 @@
-package com.suusrian.dao.mapper;
+package com.suusrian.mapper;
 
 
-import com.suusrian.domain.Location;
 import com.suusrian.domain.Score;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;

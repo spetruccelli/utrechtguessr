@@ -9,7 +9,6 @@ import mockit.Injectable;
 import mockit.Tested;
 import mockit.integration.junit4.JMockit;
 import org.junit.Test;
-import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,9 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(JMockit.class)
 public class GameControllerTest {

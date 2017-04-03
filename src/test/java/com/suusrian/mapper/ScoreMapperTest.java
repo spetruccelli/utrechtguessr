@@ -1,4 +1,4 @@
-package com.suusrian.dao.mapper;
+package com.suusrian.mapper;
 
 import com.suusrian.domain.Score;
 import mockit.Expectations;
@@ -11,7 +11,8 @@ import org.junit.runner.RunWith;
 import java.sql.ResultSet;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 @RunWith(JMockit.class)
 public class ScoreMapperTest {

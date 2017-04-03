@@ -1,6 +1,6 @@
 package com.suusrian.dao;
 
-import com.suusrian.dao.mapper.ScoreMapper;
+import com.suusrian.mapper.ScoreMapper;
 import com.suusrian.domain.Score;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -12,9 +12,9 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
-import static com.suusrian.dao.mapper.ScoreMapper.DISTANCE;
-import static com.suusrian.dao.mapper.ScoreMapper.ID;
-import static com.suusrian.dao.mapper.ScoreMapper.POINTS;
+import static com.suusrian.mapper.ScoreMapper.DISTANCE;
+import static com.suusrian.mapper.ScoreMapper.ID;
+import static com.suusrian.mapper.ScoreMapper.POINTS;
 
 @Component
 public class ScoreDaoImpl implements ScoreDao {

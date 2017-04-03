@@ -1,6 +1,6 @@
 package com.suusrian.dao;
 
-import com.suusrian.dao.mapper.LocationMapper;
+import com.suusrian.mapper.LocationMapper;
 import com.suusrian.domain.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;

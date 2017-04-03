@@ -1,4 +1,4 @@
-package com.suusrian.dao.mapper;
+package com.suusrian.mapper;
 
 
 import com.suusrian.domain.Location;

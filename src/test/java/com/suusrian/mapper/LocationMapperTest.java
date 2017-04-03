@@ -1,4 +1,4 @@
-package com.suusrian.dao.mapper;
+package com.suusrian.mapper;
 
 import com.suusrian.domain.Location;
 import mockit.Expectations;
@@ -12,7 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 @RunWith(JMockit.class)
 public class LocationMapperTest {

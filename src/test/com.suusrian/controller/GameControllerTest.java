@@ -60,11 +60,4 @@ public class GameControllerTest {
         assertEquals(scoreList.size(), 10);
     }
 
-//    @Test
-//    public void shouldGetLocationById() throws Exception {
-//        ModelAndView result = controller.getLocationById(1);
-//
-//        assertNotNull(result.);
-//    }
-
 }

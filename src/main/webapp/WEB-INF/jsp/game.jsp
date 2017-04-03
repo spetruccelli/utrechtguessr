@@ -15,7 +15,7 @@ ${message}
 
 <div id="photos_plus_map">
     <c:forEach items="${locationList}" var="location">
-        <table style="border: blue 4px solid; width: 1002px; height: 500px">
+        <table style="border: 4px solid blue; width: 1020px; height: 500px;table-layout: fixed;margin-bottom: 5px">
             <tr>
                 <td style="width: 500px; height: 500px"><img src="${location.image}" style="max-width: 500px; max-height: 500px"/></td>
                 <td style="width: 2px;">&nbsp;</td>
@@ -24,17 +24,17 @@ ${message}
                 </td>
             </tr>
             <tr>
-                <td id="info${location.id}" style="width: 500px;text-align: left;"></td>
+                <td id="info${location.id}" style="width: 500px;text-align: left;font-size: 18px;"></td>
             </tr>
             <tr>
-                <td id="distance${location.id}" style="width: 500px;text-align: left;"> <p>Choose the location of the
+                <td id="distance${location.id}" style="width: 500px;text-align: left;font-size: 18px;"> <p>Choose the location of the
                 picture shown</p>
                 </td>
                 <td style="width: 2px;">&nbsp;</td>
-                <td id="mapinfo${location.id}" style="width: 500px;text-align: left;">It is possible to zoom in/out and to move the map</td>
+                <td id="mapinfo${location.id}" style="width: 500px;text-align: left;font-size: 18px;">It is possible to zoom in/out and to move the map</td>
             </tr>
             <tr>
-                <td id="score${location.id}" style="width: 500px;text-align: left;"></td>
+                <td id="score${location.id}" style="width: 500px;text-align: left;font-size: 18px;"></td>
             </tr>
 
         </table>

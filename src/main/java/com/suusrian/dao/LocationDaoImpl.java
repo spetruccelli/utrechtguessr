@@ -14,8 +14,6 @@ import java.util.Optional;
 
 @Component
 public class LocationDaoImpl implements LocationDao {
-    private int id;
-
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final LocationMapper locationMapper;
 

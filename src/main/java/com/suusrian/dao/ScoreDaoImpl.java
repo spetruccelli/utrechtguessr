@@ -18,7 +18,6 @@ import static com.suusrian.dao.mapper.ScoreMapper.POINTS;
 
 @Component
 public class ScoreDaoImpl implements ScoreDao {
-    private int id;
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final ScoreMapper scoreMapper;

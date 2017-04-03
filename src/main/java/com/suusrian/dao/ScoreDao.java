@@ -1,6 +1,5 @@
 package com.suusrian.dao;
 
-import com.suusrian.domain.Location;
 import com.suusrian.domain.Score;
 import org.springframework.dao.DataAccessException;
 

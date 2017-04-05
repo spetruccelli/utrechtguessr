@@ -47,7 +47,7 @@ public class GameControllerTest {
 
         ModelAndView result = controller.game();
 
-        String message = (String) result.getModel().get("message"); //The game starts now
+        String message = (String) result.getModel().get("message"); //Ok... here we go.. :) The game starts now!
         List<Location> locationList = ( List<Location>) result.getModel().get("locationList"); //10
         List<Score> scoreList = ( List<Score>) result.getModel().get("scoreList"); //10
 

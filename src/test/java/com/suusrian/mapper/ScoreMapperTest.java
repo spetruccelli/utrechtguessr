@@ -18,7 +18,7 @@ import static org.junit.Assert.assertThat;
 public class ScoreMapperTest {
 
     @Tested
-    ScoreMapper scoreMapper;
+    public ScoreMapper scoreMapper;
 
     @Test
     public void mapRowShouldResultInScore(@Mocked ResultSet rs) throws Exception {

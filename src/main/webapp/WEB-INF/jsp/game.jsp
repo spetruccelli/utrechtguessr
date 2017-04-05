@@ -7,7 +7,6 @@
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-Ok... here we go.. :)
 ${message}
 
 <div id="totalScore1" style="width: 1000px;text-align: left;color:RED">Your total score up to now is: 0 out of 100</div>
@@ -74,7 +73,7 @@ ${message}
                 position: actualPosition,
                 map: map${location.id},
                 icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                title: 'actual location ${location.id}'
+                title: 'actual location'
             });
             google.maps.event.removeListener(listener${location.id});
             var distance = google.maps.geometry.spherical.computeDistanceBetween(clickedPosition, actualPosition).toFixed(2);

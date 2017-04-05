@@ -34,7 +34,7 @@ public class GameController {
     public ModelAndView game() {
         ModelAndView modelAndView = new ModelAndView("game");
 
-        String message = "<h1>The game starts now!<h1>";
+        String message = "<h1>Ok... here we go.. :) The game starts now!<h1>";
         modelAndView.addObject("message", message);
 
         List<Location> locations = locationDao.getLocations();

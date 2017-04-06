@@ -55,14 +55,6 @@ public class GameController {
         return modelAndView;
     }
 
-    @ResponseBody
-    private ResponseEntity<Location> handleError(Exception e) {
-        return new ResponseEntity<Location>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
 
-    @ResponseBody
-    private ResponseEntity<Location> handleNotFound() {
-        return new ResponseEntity<Location>(HttpStatus.NOT_FOUND);
-    }
 
 }
